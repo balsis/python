@@ -103,8 +103,8 @@ elif m == n:
 # На вход программе подаются два целых числа m и n.
 # Программа должна вывести числа в соответствии с условием задачи.
 
-m, n = int(input()),int(input())
-#print(m%2+m-1)
-#print(n%2+n-1)
-for i in range(m%2+m-1,n-1,-2):
+m, n = int(input()), int(input())
+# print(m%2+m-1)
+# print(n%2+n-1)
+for i in range(m % 2 + m - 1, n - 1, -2):
     print(i)
