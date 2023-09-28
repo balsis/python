@@ -1,7 +1,3 @@
-def rec(x):
-    if x < 4:
-        print(x)
-        rec(x+1)
-        print(x)
-
-rec(2)
+a = [[[[9]]]]
+if type(a) == list:
+    print(*a)
