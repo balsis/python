@@ -8,7 +8,7 @@ driver: WebDriver = webdriver.Chrome()
 
 def test_add_item_to_the_cart():
     driver.get("https://www.saucedemo.com/")
-
+    url_before = driver.current_url
     username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
     username_field.send_keys("standard_user")
 
@@ -18,17 +18,14 @@ def test_add_item_to_the_cart():
     login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
     login_button.click()
 
-    backpack_text = driver.find_element(By.XPATH, '//a[@id="item_4_title_link"]/div[@class="inventory_item_name "]').text
+    burger_menu = driver.find_element(By.ID, 'react-burger-menu-btn')
+    burger_menu.click()
+    time.sleep(1)
+    logout = driver.find_element(By.ID, 'logout_sidebar_link')
+    logout.click()
 
-    add_to_cart_button = driver.find_element(By.XPATH, '//button[@data-test = "add-to-cart-sauce-labs-backpack"] ')
-    add_to_cart_button.click()
+    url_after = driver.current_url
 
-    shopping_cart_link = driver.find_element(By.XPATH, '//a[@class = "shopping_cart_link"]')
-    shopping_cart_link.click()
-
-    item_text_in_cart = driver.find_element(By.XPATH, '//a[@id="item_4_title_link"]/div[@class="inventory_item_name"]').text
-
-    assert backpack_text == item_text_in_cart
-
+    assert url_after == url_before
+    time.sleep(3)
     driver.quit()
-
