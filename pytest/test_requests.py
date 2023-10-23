@@ -6,11 +6,13 @@ BASE_URL = 'https://restful-booker.herokuapp.com/booking'
 AUTH_URL = 'https://restful-booker.herokuapp.com/auth'
 STATUS_OK = 200
 
+
 # Получить все заказы, проверить на статус и наличие заголовка
 def test_get_all_booking():
     response = requests.get(BASE_URL)
     assert response.status_code == STATUS_OK
     assert 'Connection' in response.headers, 'There is no expected key'
+
 
 # Создать заказ и проверить по полю 'firstname'
 def test_create_booking():
@@ -32,6 +34,7 @@ def test_create_booking():
     get_response = requests.get(f'{BASE_URL}/{id}')
     assert get_response.json()['firstname'] == 'James'
 
+
 # Создать заказ и проверить по полю 'firstname' c фикстурой
 # Фикстура для получения 'booking_id'
 @pytest.fixture(scope='function')
@@ -52,10 +55,12 @@ def booking_id():
     booking_id = response.json()['bookingid']
     yield booking_id
 
+
 # Проверка по полю 'firstname', 'booking_id' получаем из фикстуры
 def test_create_booking_with_fixture(booking_id):
     response = requests.get(f'{BASE_URL}/{booking_id}')
     assert response.json()['firstname'] == 'Joe'
+
 
 # Фикстура для получения токена
 @pytest.fixture(scope='function')
@@ -69,6 +74,7 @@ def token():
     token = response_data['token']
     assert response.status_code == STATUS_OK
     yield token
+
 
 def test_delete_new_booking(booking_id, token):
     headers = {'Cookie': f'token={token}'}
