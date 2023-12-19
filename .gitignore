@@ -1,4 +1,6 @@
 /selenium_stepik/environments/selenium_env/
 /redrover/lesson_1/venv
 /selenium_practice/venv
-/pytest/venv
+/pytest_course/venv
+/Challenges/pytest/.pytest_cache/
+/Challenges/pytest/venv/
