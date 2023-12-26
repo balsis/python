@@ -6,14 +6,16 @@ import time
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-driver.get('https://en.wikipedia.org/wiki/Wikipedia')
+driver.get('https://practicetestautomation.com/practice-test-login/')
 
+# Получить текущий URL
 url = driver.current_url
 print(url)
-assert url == 'https://en.wikipedia.org/wiki/Wikipedia', 'Wrong URL'
+assert url == 'https://practicetestautomation.com/practice-test-login/', 'Wrong URL'
 
+# Получить текущий title страницы
 current_title = driver.title
 print(current_title)
-assert current_title == 'Wikipedia - Wikipedia', 'Wrong Title'
+assert current_title == 'Test Login | Practice Test Automation', 'Wrong Title'
 
-print(driver.page_source)
+#print(driver.page_source)

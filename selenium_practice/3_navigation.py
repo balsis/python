@@ -7,10 +7,12 @@ service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
 driver.get('https://yandex.ru')
-time.sleep(10)
+time.sleep(3)
 
+# Навигация назад
 driver.back()
 time.sleep(3)
 
+# Навигация вперед
 driver.forward()
 time.sleep(3)

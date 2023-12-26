@@ -6,17 +6,34 @@ from selenium.webdriver.chrome.service import Service
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-driver.get('https://www.freeconferencecall.com/global/')
+driver.get('https://practicetestautomation.com/practice-test-login/')
 
-login_button = driver.find_element("xpath","//a[@id='login-desktop']")
-login_button.click()
-time.sleep(3)
 
-email = driver.find_element("xpath", "//input[@id='login_email']")
-email.send_keys('test@ya.ru')
+# Записываем найденный элемент (button) в переменную
+submit_button = driver.find_element("xpath", "//button[@id='submit']")
+
+# Записываем найденные элементы (input) в переменную
+username_field = driver.find_element("xpath", "//input[@id='username']")
+password_field = driver.find_element("xpath", "//input[@id='password']")
+time.sleep(5)
+
+# Проверим, что input пустые и очистим
+if username_field.get_attribute('value'):
+    username_field.clear()
+if password_field.get_attribute('value'):
+    password_field.clear()
+
+# Обращаясь к переменным с найденными элементами вызываем метод send_keys(), вписывая в input текст
+username_field.send_keys('student')
+password_field.send_keys('Password123')
 time.sleep(1)
-email.clear()
+
+print(username_field.get_attribute('value'))
+print(password_field.get_attribute('value'))
+
 time.sleep(1)
-email.send_keys('test2@ya.ru')
-print(email.get_attribute('value'))
-time.sleep(3)
+
+#Кликаем по кнопочке
+submit_button.click()
+time.sleep(1)
+
