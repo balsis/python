@@ -1,14 +1,13 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 import time
-from pprint import pprint
 
-driver: WebDriver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
-def test_add_item_to_the_cart():
+
+def test_login_form():
     driver.get("https://www.saucedemo.com/")
-    url_before = driver.current_url
+
     username_field = driver.find_element("xpath", '//input[@data-test="username"]')
     username_field.send_keys("standard_user")
 
@@ -18,14 +17,7 @@ def test_add_item_to_the_cart():
     login_button = driver.find_element("xpath", '//input[@data-test="login-button"]')
     login_button.click()
 
-    burger_menu = driver.find_element(By.ID, 'react-burger-menu-btn')
-    burger_menu.click()
-    time.sleep(1)
-    logout = driver.find_element(By.ID, 'logout_sidebar_link')
-    logout.click()
+    time.sleep(2)
+    assert driver.current_url == "https://www.saucedemo.com/inventory.html"
 
-    url_after = driver.current_url
-
-    assert url_after == url_before
-    time.sleep(3)
     driver.quit()
