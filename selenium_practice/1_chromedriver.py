@@ -7,3 +7,9 @@ from selenium.webdriver.chrome.service import Service  # Импортируем 
 service = Service(executable_path=ChromeDriverManager().install())
 # Создаем экземпляр Chrome WebDriver с настроенной службой
 driver = webdriver.Chrome(service=service)
+
+driver.get("https://www.google.com/")
+cookies = driver.execute_cdp_cmd(cmd="Network.getCookies", cmd_args={})
+
+for cookie in cookies["cookies"]:
+    print(cookie["name"])
