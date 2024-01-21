@@ -1,14 +1,22 @@
+# Явное ожидание - ожидание конкретного условия, появления элемента, исчезновения элемента, изменения текста
+
 import time
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+# WebDriverWait - нужен для того, чтобы мы могли указать общее время ожидания для всех условий в будущем.
 from selenium.webdriver.support.ui import WebDriverWait
+# expected_conditions - в дальнейшем EC, так и переводится “ожидаемые условия”,
+# Данный модуль поможет нам выбрать необходимое условие, выполнения которого мы будем ожидать.
 from selenium.webdriver.support import expected_conditions as EC
 
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
-
+# создается обьект wait:
+# driver - Ну понятное дело, он же ждать то будет)
+# 30 (любое число) - это количество секунд, в течение которого драйвер будет ждать выполнения того или иного условия
+# poll_frequency=1 - определяет то, как часто делать новый запрос на проверку выполнения ожидаемого условия. В данном случае 1 секунда.
 wait = WebDriverWait(driver, 15, poll_frequency=1)
 
 # -----------------------------------------------------------------------------#
