@@ -19,3 +19,7 @@ pip freeze > requirements.txt
 ```
 pip install -r requirements.txt
 ```
+
+**User-agent**  
+https://useragents.ru/stable.html - ПК агенты  
+https://deviceatlas.com/blog/mobile-browser-user-agent-strings - мобильные агенты

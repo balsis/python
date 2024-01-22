@@ -5,25 +5,26 @@ class Stack:
 
     # Метод push(item) добавляет новый элемент на вершину стека, метод ничего не возвращает
     def push(self, item):
-        pass
+        self.values.append(item)
 
-    # Метод pop() удаляет верхний элемент из стека. Метод ***возвращает элемент***
+    # Метод pop() удаляет верхний элемент из стека.
 
     def pop(self):
-        pass
+        return self.values.pop() if not self.is_empty() else print("Empty Stack")
 
-   # Возвращает верхний элемент стека, но не удаляет его.
+        # Возвращает верхний элемент стека, но не удаляет его.
 
     def peek(self):
-        pass
+        return self.values[-1] if not self.is_empty() else (print("Empty Stack") or None)
 
-   # Метод is_empty() проверяет стек на пустоту. Возвращает булево значение
+    # Метод is_empty() проверяет стек на пустоту. Возвращает булево значение
     def is_empty(self):
-        pass
+        return True if self.values == [] else False
 
     # Метод size() возвращает количество элементов в стеке.
     def size(self):
         return len(self.values)
+
 
 # Ниже код для проверки класса Stack
 s = Stack()
@@ -46,7 +47,6 @@ assert s.is_empty() is False
 
 s.push(777)
 assert s.size() == 4
-
 assert s.pop() == 777
 assert s.size() == 3
 
