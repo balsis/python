@@ -16,7 +16,10 @@ options.page_load_strategy = "normal"
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 wait = WebDriverWait(driver, 10, poll_frequency=1)
+
+
 driver.get("http://the-internet.herokuapp.com/dropdown")
+
 DROPDOWN_ELEMENT = ("xpath", "//select[@id='dropdown']")
 DROPDOWN = Select(driver.find_element(*DROPDOWN_ELEMENT))
 
